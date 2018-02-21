@@ -1,0 +1,64 @@
+<header>
+  <h3>Elements</h3>
+</header>
+
+<div>
+  <ul>
+    <li>
+      <p>Simple required field</p>
+      <div>
+        <input type="text" validator-required [validator-manager]="validatorManager" [validator-property]="'RequiredField'">
+      </div>
+    </li>
+    <li>
+      <p>Integer field validation</p>
+      <div>
+        <input type="text" validator-required validator-integer [validator-manager]="validatorManager" [validator-property]="'IntegerField'">
+      </div>
+    </li>
+    <li>
+      <p>IP field validation</p>
+      <div>
+        <input type="text" validator-ip [validator-manager]="validatorManager" [validator-property]="'IPField'">
+      </div>
+    </li>
+    <li>
+      <p>Range field validation (among 5 and 10 inclusive)</p>
+      <div>
+        <input type="text"
+            validator-range
+            validator-range-from="5"
+            validator-range-to="10"
+            validator-range-from-inclusive="5"
+            validator-range-to-inclusive="10"
+            required="false"
+            [validator-manager]="validatorManager" [validator-property]="'RangeFieldValidation'">
+      </div>
+    </li>
+  </ul>
+</div>
+
+<h3>Errors</h3>
+<pre>
+  Global -> Is Valid: {{ validatorManager.IsValid() }}
+
+  <table>
+    <thead>
+      <tr>
+        <td>Property</td>
+        <td>ValidationType</td>
+        <td>Is Valid?</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let el of validatorManager.Results">
+        <td>{{ el.PropertyName }}</td>
+        <td>{{ el.ValidatorType }}</td>
+        <td>{{ el.IsValid }}</td>
+      </tr>
+    </tbody>
+  </table>
+</pre>
+
+
+<button (click)="runValidation()">Validate</button>
