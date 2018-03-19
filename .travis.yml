@@ -10,7 +10,7 @@ before_script:
   - npm install -g @angular/cli
 
 script:
-  - npm run test
+  - cd AngularValidator && npm run test
 
 notifications:
   email:
