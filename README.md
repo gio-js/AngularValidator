@@ -3,8 +3,8 @@ A simple plugin Angular component for custom form validation.
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://github.com/gio-js/AngularValidator.svg)](https://github.com/gio-js/AngularValidator)
-[![Build Status](https://github.com/gio-js/AngularValidator.svg?branch=master)](https://travis-ci.org/gio-js/AngularValidator)
+[![npm version](https://badge.fury.io/js/ng5-validator.svg)](https://badge.fury.io/js/ng5-validator.svg)
+[![Build Status](https://travis-ci.org/gio-js/AngularValidator.svg?branch=master)](https://travis-ci.org/gio-js/AngularValidator)
 
 # ng5-validator
 
