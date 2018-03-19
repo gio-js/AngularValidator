@@ -56,27 +56,3 @@ export class ValidatorsModule {
   }
 
 }
-
-// components
-export * from './components/app.component.attribute-validator-required';
-export * from './components/app.component.attribute-validator-integer';
-export * from './components/app.component.attribute-validator-float';
-export * from './components/app.component.attribute-validator-generic';
-export * from './components/app.component.attribute-validator-ip';
-export * from './components/app.component.attribute-validator-port';
-export * from './components/app.component.attribute-validator-guid';
-export * from './components/app.component.attribute-validator-password';
-export * from './components/app.component.attribute-validator-range';
-export * from './components/app.component.attribute-validator';
-
-// consts
-export * from './const/app.const.validator-messages';
-export * from './const/app.const.validator-types';
-
-// enums
-export * from './enums/app.enum.validator-types-enum';
-
-// models
-export * from './model/app.model.validation-behaviour';
-export * from './model/app.model.validator-element-result';
-export * from './model/app.model.validator-registered-element';
