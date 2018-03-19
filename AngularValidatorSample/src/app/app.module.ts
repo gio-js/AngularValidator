@@ -1,19 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-
-
+import { ValidatorsModule } from 'ng5-validator';
+import { AppViewValidatorsDemo } from './views/app.view.validators';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppViewValidatorsDemo
   ],
   imports: [
     BrowserModule,
-
+    ValidatorsModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppViewValidatorsDemo]
 })
 export class AppModule { }

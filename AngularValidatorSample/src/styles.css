@@ -1,0 +1,15 @@
+/*
+ * error validation
+ */
+
+ .validator-error {
+  color: red;
+}
+
+/*
+ * success validation
+ */
+
+.validator-success {
+  color: green;
+}

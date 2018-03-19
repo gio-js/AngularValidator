@@ -1,5 +1,6 @@
 import { Component, Renderer2 } from '@angular/core';
-import { ValidatorManager } from '../services/app.service.validator-manager';
+import { ValidatorManager } from 'ng5-validator';
+
 
 @Component({
   selector: 'app-view-validators',
