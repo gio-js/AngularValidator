@@ -11,6 +11,10 @@ A simple plugin Angular component for custom form validation.
 Angular 5 - Forms validation
 
 
+## Live demo
+http://www.giovannisorgente.it/AngularValidator/
+
+
 ## Getting started
 
 `npm i --save ng5-validator`
