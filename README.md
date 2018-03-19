@@ -30,6 +30,10 @@ imports: [ ValidatorsModule.forRoot() ]
 
 inject the ValidatorManager service in your view component:<br/>
 ```typescript
+@Component({
+  selector: 'app-view-validators',
+  templateUrl: 'app.view.validators.html'
+})
 export class AppViewValidatorsDemo {
 
   public validatorManager: ValidatorManager = null;

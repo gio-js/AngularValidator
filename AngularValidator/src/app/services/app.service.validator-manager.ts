@@ -14,7 +14,6 @@ import { DependencyTokens } from '../const/app.const.tokens';
 export class ValidatorManager {
 
   /**
-   *
    * @param renderer
    */
   constructor( @Inject(DependencyTokens.VALIDATOR_CONFIGURATOR) private serviceConfigurator: IValidatorConfigurator) {
@@ -29,7 +28,7 @@ export class ValidatorManager {
   /**
    * Validation result
    */
-  private Results: Array<ValidatorElementResult> = [];
+  private internalResults: Array<ValidatorElementResult> = [];
 
   /**
    * Elements to validate
@@ -40,7 +39,7 @@ export class ValidatorManager {
    * Does the validations returns a valid state?
    */
   public IsValid(): boolean {
-    for (const res of this.Results) {
+    for (const res of this.internalResults) {
       if (!res.IsValid) {
         return false;
       }
@@ -56,14 +55,14 @@ export class ValidatorManager {
    * @param valid is valid?
    */
   public SetValidation(property: string, type: ValidatorTypesEnum, valid: boolean): void {
-    for (const res of this.Results) {
+    for (const res of this.internalResults) {
       if (res.PropertyName === property && res.ValidatorType === type) {
         res.IsValid = valid;
         return;
       }
     }
 
-    this.Results.push({
+    this.internalResults.push({
       PropertyName: property,
       ValidatorType: type,
       IsValid: valid
@@ -267,7 +266,7 @@ export class ValidatorManager {
 
     // clear arrays
     this.RegisteredElements.length = 0;
-    this.Results.length = 0;
+    this.internalResults.length = 0;
   }
 
   /**
@@ -278,7 +277,7 @@ export class ValidatorManager {
 
     // null arrays
     this.RegisteredElements = null;
-    this.Results = null;
+    this.internalResults = null;
   }
 
   /**
@@ -286,7 +285,7 @@ export class ValidatorManager {
    */
   public Validate(): void {
     // clear previous validations
-    this.Results.length = 0;
+    this.internalResults.length = 0;
 
     for (const el of this.RegisteredElements) {
       this.validateElement(el);
@@ -420,11 +419,11 @@ export class ValidatorManager {
    * Remove validation result by index
    */
   private removeValidationResult(property: string) {
-    let resultIndex = this.Results.findIndex(r => r.PropertyName === property);
+    let resultIndex = this.internalResults.findIndex(r => r.PropertyName === property);
 
     while (resultIndex >= 0) {
-      this.Results.splice(resultIndex, 1);
-      resultIndex = this.Results.findIndex(r => r.PropertyName === property);
+      this.internalResults.splice(resultIndex, 1);
+      resultIndex = this.internalResults.findIndex(r => r.PropertyName === property);
     }
   }
 
@@ -491,5 +490,11 @@ export class ValidatorManager {
     return retval;
   }
 
+  /**
+   * Results collection
+   */
+  public get Results(): Array<ValidatorElementResult> {
+    return this.internalResults.slice(0);
+  }
 
 }
