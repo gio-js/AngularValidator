@@ -34,8 +34,8 @@ export class ValidatorRangeAttributeDirective extends ValidatorAttributeDirectiv
   public RangeToInclusive = true;
 
 
-  constructor(el: ElementRef, renderer: Renderer2) {
-    super(el, renderer);
+  constructor(el: ElementRef) {
+    super(el);
     this.errorMessage = ValidatorMessages.RANGE;
     this.validatorType = ValidatorTypesEnum.RANGE;
     // validation

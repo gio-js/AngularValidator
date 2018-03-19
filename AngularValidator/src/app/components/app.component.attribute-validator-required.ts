@@ -18,8 +18,8 @@ import { ValidatorTypesEnum } from '../enums/app.enum.validator-types-enum';
 })
 export class ValidatorRequiredAttributeDirective extends ValidatorAttributeDirective {
 
-  constructor(el: ElementRef, renderer: Renderer2) {
-    super(el, renderer);
+  constructor(el: ElementRef) {
+    super(el);
     this.errorMessage = ValidatorMessages.REQUIRED;
     this.validatorType = ValidatorTypesEnum.REQUIRED;
     this.validatorRequired = true;

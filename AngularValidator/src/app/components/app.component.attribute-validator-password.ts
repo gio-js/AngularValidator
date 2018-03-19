@@ -18,8 +18,8 @@ import { ValidatorTypesEnum } from '../enums/app.enum.validator-types-enum';
 })
 export class ValidatorPasswordAttributeDirective extends ValidatorAttributeDirective {
 
-  constructor(el: ElementRef, renderer: Renderer2) {
-    super(el, renderer);
+  constructor(el: ElementRef) {
+    super(el);
 
     // number regexp
     this.validatorType = ValidatorTypesEnum.PATTERN;

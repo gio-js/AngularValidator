@@ -14,8 +14,8 @@ import { ValidatorAttributeDirective } from './app.component.attribute-validator
 })
 export class ValidatorGenericAttributeDirective extends ValidatorAttributeDirective {
 
-    constructor(el: ElementRef, renderer: Renderer2) {
-        super(el, renderer);
+    constructor(el: ElementRef) {
+        super(el);
     }
 
 }

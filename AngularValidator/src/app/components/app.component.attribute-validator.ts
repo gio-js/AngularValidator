@@ -2,7 +2,7 @@
  * @module app/components
  */ /** */
 import { ValidatorRequiredAttributeDirective } from './app.component.attribute-validator-required';
-import { Directive, ElementRef, Input, Renderer2, SimpleChanges } from '@angular/core';
+import { Directive, ElementRef, Input, Renderer2, SimpleChanges, Inject } from '@angular/core';
 import { EventEmitter, Output } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { OnDestroy } from '@angular/core';
@@ -77,7 +77,7 @@ export class ValidatorAttributeDirective implements AfterViewInit {
    * @param el native element
    * @param renderer renderer element
    */
-  constructor(private el: ElementRef, private renderer: Renderer2) { }
+  constructor(private el: ElementRef) { }
 
   /**
    * Component initialization

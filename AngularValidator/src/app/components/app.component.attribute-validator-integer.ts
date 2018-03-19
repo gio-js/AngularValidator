@@ -16,8 +16,8 @@ import { ValidatorAttributeDirective } from './app.component.attribute-validator
 })
 export class ValidatorIntegerAttributeDirective extends ValidatorAttributeDirective {
 
-  constructor(el: ElementRef, renderer: Renderer2) {
-    super(el, renderer);
+  constructor(el: ElementRef) {
+    super(el);
 
     // number regexp
     this.validatorType = ValidatorTypesEnum.INTEGER;

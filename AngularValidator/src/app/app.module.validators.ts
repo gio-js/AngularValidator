@@ -1,5 +1,4 @@
-
-import { NgModule, ModuleWithProviders, Renderer2 } from '@angular/core';
+import { NgModule, ModuleWithProviders, Renderer2, RendererFactory2 } from '@angular/core';
 import { ValidatorGenericAttributeDirective } from './components/app.component.attribute-validator-generic';
 import { ValidatorRequiredAttributeDirective } from './components/app.component.attribute-validator-required';
 import { ValidatorIntegerAttributeDirective } from './components/app.component.attribute-validator-integer';
@@ -11,8 +10,9 @@ import { ValidatorPasswordAttributeDirective } from './components/app.component.
 import { ValidatorRangeAttributeDirective } from './components/app.component.attribute-validator-range';
 import { ValidatorManager } from './services/app.service.validator-manager';
 import { IValidatorConfigurator } from './interfaces/app.interface.validator-configurator';
-import { ValidatorConfigurator } from './services/app.service.validator-configurator';
 import { BrowserModule } from '@angular/platform-browser';
+import { BaseValidatorConfigurator } from './services/app.service.validator-configurator';
+import { DependencyTokens } from './const/app.const.tokens';
 
 
 @NgModule({
@@ -29,7 +29,6 @@ import { BrowserModule } from '@angular/platform-browser';
     ValidatorGuidAttributeDirective,
     ValidatorPasswordAttributeDirective,
     ValidatorRangeAttributeDirective,
-
   ],
   exports: [
     ValidatorGenericAttributeDirective,
@@ -40,7 +39,7 @@ import { BrowserModule } from '@angular/platform-browser';
     ValidatorPortAttributeDirective,
     ValidatorGuidAttributeDirective,
     ValidatorPasswordAttributeDirective,
-    ValidatorRangeAttributeDirective,
+    ValidatorRangeAttributeDirective
 
   ]
 })
@@ -50,15 +49,13 @@ export class ValidatorsModule {
     return {
       ngModule: ValidatorsModule,
       providers: [
-        ValidatorConfigurator,
-        // { provide: ValidatorConfigurator, deps: [Renderer2], useFactory: ValidatorConfiguratorFactory },
+        { provide: DependencyTokens.VALIDATOR_CONFIGURATOR, useClass: BaseValidatorConfigurator },
         ValidatorManager
       ]
     };
   }
 
 }
-
 
 // components
 export * from './components/app.component.attribute-validator-required';

@@ -1,10 +1,11 @@
-import { ElementRef, Inject, Renderer2 } from '@angular/core';
+import { ElementRef, Inject, Renderer2, Injectable } from '@angular/core';
 import { ValidatorTypesEnum } from '../enums/app.enum.validator-types-enum';
 import { ValidatorRegisteredElement } from '../model/app.model.validator-registered-element';
 import { ValidatorElementResult } from '../model/app.model.validator-element-result';
 import { ValidationBehaviour } from '../model/app.model.validation-behaviour';
 import { ValidatorMessages } from '../const/app.const.validator-messages';
-import { ValidatorConfigurator } from './app.service.validator-configurator';
+import { IValidatorConfigurator } from '../interfaces/app.interface.validator-configurator';
+import { DependencyTokens } from '../const/app.const.tokens';
 
 
 /**
@@ -16,7 +17,14 @@ export class ValidatorManager {
    *
    * @param renderer
    */
-  constructor(private renderer: Renderer2, @Inject(ValidatorConfigurator) private serviceConfigurator: ValidatorConfigurator) { }
+  constructor( @Inject(DependencyTokens.VALIDATOR_CONFIGURATOR) private serviceConfigurator: IValidatorConfigurator) {
+    this.renderer = serviceConfigurator.getRenderer();
+  }
+
+  /**
+   * Internal DOM renderer
+   */
+  private renderer: Renderer2 = null;
 
   /**
    * Validation result
@@ -329,33 +337,49 @@ export class ValidatorManager {
    * @param el Element in error
    */
   private appendError(element: ValidatorRegisteredElement, errorMessage: string) {
-    // get parents
-    const parent: any = this.renderer.parentNode(element.DomElement.nativeElement);
-    const formGroupElement: any = this.closestElement(element.DomElement.nativeElement, '.form-group', 'body');
-
-    // create error element block message
-    const errorElement: any = this.renderer.createElement('span');
-    this.renderer.addClass(errorElement, 'help-block');
-    this.renderer.addClass(errorElement, 'help-block-error');
-    this.renderer.setProperty(errorElement, 'innerHTML', errorMessage);
-
-    // append elements
-    this.renderer.appendChild(parent, errorElement);
-    // this.renderer.appendChild(parent, errorIcon);
-
-    // set error css style
-    if (formGroupElement) {
-      this.renderer.addClass(formGroupElement, 'has-error');
-    }
-
     // append elements to internal dom array
     if (element.ErrorElements == null) {
       element.ErrorElements = [];
     }
 
-    element.ErrorElements.push(
-      errorElement
-    );
+    // custom error handler
+    const errorHandle = this.serviceConfigurator.handleAttachError(this.renderer, element, errorMessage);
+
+    if (errorHandle && errorHandle.HasBeenHandled === true) {
+
+      element.ErrorElements.push(
+        errorHandle.DomElement
+      );
+
+    } else {
+
+      // get parents
+      const parent: any = this.renderer.parentNode(element.DomElement.nativeElement);
+      const formGroupElement: any = this.closestElement(element.DomElement.nativeElement, '.form-group', 'body');
+      const errorElementClass: string = this.serviceConfigurator.getControlElementErrorClassName();
+
+      // create error element block message
+      const errorElement: any = this.renderer.createElement('span');
+      this.renderer.addClass(errorElement, 'help-block');
+      this.renderer.addClass(errorElement, 'help-block-error');
+      this.renderer.addClass(errorElement, errorElementClass);
+      this.renderer.setProperty(errorElement, 'innerHTML', errorMessage);
+
+      // append elements
+      this.renderer.appendChild(parent, errorElement);
+      // this.renderer.appendChild(parent, errorIcon);
+
+      // set error css style
+      if (formGroupElement) {
+        this.renderer.addClass(formGroupElement, 'has-error');
+      }
+
+      element.ErrorElements.push(
+        errorElement
+      );
+
+    }
+
   }
 
   /**

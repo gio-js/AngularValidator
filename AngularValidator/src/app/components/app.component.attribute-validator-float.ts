@@ -16,8 +16,8 @@ import { ValidatorMessages } from '../const/app.const.validator-messages';
 })
 export class ValidatorFloatAttributeDirective extends ValidatorAttributeDirective {
 
-  constructor(el: ElementRef, renderer: Renderer2) {
-    super(el, renderer);
+  constructor(el: ElementRef) {
+    super(el);
     this.errorMessage = ValidatorMessages.FLOAT;
     this.validatorType = ValidatorTypesEnum.FLOAT;
 

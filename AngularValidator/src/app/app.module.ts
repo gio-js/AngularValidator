@@ -11,8 +11,9 @@ import { AppViewValidatorsDemo } from './views/app.view.validators';
     AppViewValidatorsDemo
   ],
   imports: [
+    BrowserModule,
     ValidatorsModule.forRoot(),
-    BrowserModule
+
   ],
   providers: [],
   bootstrap: [AppViewValidatorsDemo]
