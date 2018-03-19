@@ -1,12 +1,12 @@
 {
   "name": "ng5-validator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "publish": "copy ..\\README.md README.md && ng-packagr -p ng-package.json && cd dist && npm publish",
+    "publish": "copy ..\\README.md README.md && ng-packagr && cd dist && npm publish",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
