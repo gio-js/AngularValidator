@@ -59,10 +59,10 @@ export class ValidatorRangeAttributeDirective extends ValidatorAttributeDirectiv
         return false;
       }
 
-      const isFromValid = ((this.RangeFromInclusive === true && (this.RangeFrom <= value)) ||
-        (this.RangeFromInclusive === false && (this.RangeFrom < value)));
-      const isToValid = ((this.RangeToInclusive === true && (this.RangeTo >= value)) ||
-        (this.RangeToInclusive === false && (this.RangeTo > value)));
+      const isFromValid = ((this.RangeFromInclusive == true && (this.RangeFrom <= value)) ||
+        (this.RangeFromInclusive == false && (this.RangeFrom < value)));
+      const isToValid = ((this.RangeToInclusive == true && (this.RangeTo >= value)) ||
+        (this.RangeToInclusive == false && (this.RangeTo > value)));
 
       return (isFromValid && isToValid);
     };
