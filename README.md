@@ -65,8 +65,8 @@ use the unobtrusive validation by html:<br/>
             validator-range
             validator-range-from="5"
             validator-range-to="10"
-            validator-range-from-inclusive="5"
-            validator-range-to-inclusive="10"
+            validator-range-from-inclusive="true"
+            validator-range-to-inclusive="true"
             required="false"
             [validator-manager]="validatorManager" [validator-property]="'RangeFieldValidation'">
 ```
