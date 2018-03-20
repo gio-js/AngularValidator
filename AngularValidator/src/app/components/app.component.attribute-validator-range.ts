@@ -71,10 +71,12 @@ export class ValidatorRangeAttributeDirective extends ValidatorAttributeDirectiv
         this.RangeToInclusive === 1
       );
 
-      const isFromValid = ((rangeFromInclusive === true && (this.RangeFrom <= value)) ||
-        (rangeFromInclusive === false && (this.RangeFrom < value)));
-      const isToValid = ((rangeToInclusive === true && (this.RangeTo >= value)) ||
-        (rangeToInclusive === false && (this.RangeTo > value)));
+      const parsedValue = parseFloat(value);
+
+      const isFromValid = ((rangeFromInclusive === true && (this.RangeFrom <= parsedValue)) ||
+        (rangeFromInclusive === false && (this.RangeFrom < parsedValue)));
+      const isToValid = ((rangeToInclusive === true && (this.RangeTo >= parsedValue)) ||
+        (rangeToInclusive === false && (this.RangeTo > parsedValue)));
 
       return (isFromValid && isToValid);
     };
