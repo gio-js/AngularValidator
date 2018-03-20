@@ -19,19 +19,19 @@ export class ValidatorRangeAttributeDirective extends ValidatorAttributeDirectiv
 
   // tslint:disable-next-line:no-input-rename
   @Input('validator-range-from')
-  public RangeFrom = 0;
+  public RangeFrom: number = 0;
 
   // tslint:disable-next-line:no-input-rename
   @Input('validator-range-from-inclusive')
-  public RangeFromInclusive = true;
+  public RangeFromInclusive: boolean = true;
 
   // tslint:disable-next-line:no-input-rename
   @Input('validator-range-to')
-  public RangeTo = 0;
+  public RangeTo: number = 0;
 
   // tslint:disable-next-line:no-input-rename
   @Input('validator-range-to-inclusive')
-  public RangeToInclusive = true;
+  public RangeToInclusive: boolean = true;
 
 
   constructor(el: ElementRef) {
