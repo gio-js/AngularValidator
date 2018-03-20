@@ -23,7 +23,7 @@ export class ValidatorRangeAttributeDirective extends ValidatorAttributeDirectiv
 
   // tslint:disable-next-line:no-input-rename
   @Input('validator-range-from-inclusive')
-  public RangeFromInclusive: boolean = true;
+  public RangeFromInclusive;
 
   // tslint:disable-next-line:no-input-rename
   @Input('validator-range-to')
@@ -31,7 +31,7 @@ export class ValidatorRangeAttributeDirective extends ValidatorAttributeDirectiv
 
   // tslint:disable-next-line:no-input-rename
   @Input('validator-range-to-inclusive')
-  public RangeToInclusive: boolean = true;
+  public RangeToInclusive;
 
 
   constructor(el: ElementRef) {
@@ -59,10 +59,22 @@ export class ValidatorRangeAttributeDirective extends ValidatorAttributeDirectiv
         return false;
       }
 
-      const isFromValid = ((this.RangeFromInclusive == true && (this.RangeFrom <= value)) ||
-        (this.RangeFromInclusive == false && (this.RangeFrom < value)));
-      const isToValid = ((this.RangeToInclusive == true && (this.RangeTo >= value)) ||
-        (this.RangeToInclusive == false && (this.RangeTo > value)));
+      const rangeFromInclusive = (
+        this.RangeFromInclusive === true ||
+        this.RangeFromInclusive === 'true' ||
+        this.RangeFromInclusive === 1
+      );
+
+      const rangeToInclusive = (
+        this.RangeToInclusive === true ||
+        this.RangeToInclusive === 'true' ||
+        this.RangeToInclusive === 1
+      );
+
+      const isFromValid = ((rangeFromInclusive === true && (this.RangeFrom <= value)) ||
+        (rangeFromInclusive === false && (this.RangeFrom < value)));
+      const isToValid = ((rangeToInclusive === true && (this.RangeTo >= value)) ||
+        (rangeToInclusive === false && (this.RangeTo > value)));
 
       return (isFromValid && isToValid);
     };
