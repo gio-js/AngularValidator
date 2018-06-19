@@ -3,10 +3,12 @@ A simple plugin Angular component for custom form validation.
 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/ng5-validator.svg)](https://badge.fury.io/js/ng5-validator.svg)
+[![npm version](https://badge.fury.io/js/ng-form-validator.svg)](https://badge.fury.io/js/ng-form-validator.svg)
+<!-- 
 [![Build Status](https://travis-ci.org/gio-js/AngularValidator.svg?branch=master)](https://travis-ci.org/gio-js/AngularValidator)
+-->
 
-# ng5-validator
+# ng-form-validator
 
 Angular 5 - Forms validation
 
@@ -17,14 +19,14 @@ http://www.giovannisorgente.it/AngularValidator/
 
 ## Getting started
 
-`npm i --save ng5-validator`
+`npm i --save ng-form-validator`
 
 Add following lines into your
 
 **module:**
 
 ```typescript
-import { ValidatorsModule } from './ng5-validator';
+import { ValidatorsModule } from './ng-form-validator';
 ```
 
 add ValidatorsModule to your module imports section<br/>
@@ -63,10 +65,10 @@ use the unobtrusive validation by html:<br/>
 
 <input type="text"
             validator-range
-            validator-range-from="5"
-            validator-range-to="10"
-            validator-range-from-inclusive="true"
-            validator-range-to-inclusive="true"
+            [validator-range-from]="5"
+            [validator-range-to]="10"
+            [validator-range-from-inclusive]="true"
+            [validator-range-to-inclusive]="true"
             required="false"
             [validator-manager]="validatorManager" [validator-property]="'RangeFieldValidation'">
 ```

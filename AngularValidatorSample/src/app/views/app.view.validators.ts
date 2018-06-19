@@ -1,5 +1,5 @@
 import { Component, Renderer2 } from '@angular/core';
-import { ValidatorManager } from 'ng5-validator';
+import { ValidatorManager } from 'ng-form-validator';
 
 
 @Component({

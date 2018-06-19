@@ -19,7 +19,7 @@ export class BaseValidatorConfigurator implements IValidatorConfigurator {
   }
 
   /**
-   * The css class name used in case of error validation
+   * The css class name used in case of validation error
    */
   getControlElementErrorClassName(): string {
     return 'validator-error';

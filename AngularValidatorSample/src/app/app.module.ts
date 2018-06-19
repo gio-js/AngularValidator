@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ValidatorsModule } from 'ng5-validator';
+import { ValidatorsModule } from 'ng-form-validator';
 import { AppViewValidatorsDemo } from './views/app.view.validators';
 
 

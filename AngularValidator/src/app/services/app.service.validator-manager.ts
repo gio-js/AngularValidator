@@ -1,4 +1,4 @@
-import { ElementRef, Inject, Renderer2, Injectable } from '@angular/core';
+import { ElementRef, Inject, Renderer2 } from '@angular/core';
 import { ValidatorTypesEnum } from '../enums/app.enum.validator-types-enum';
 import { ValidatorRegisteredElement } from '../model/app.model.validator-registered-element';
 import { ValidatorElementResult } from '../model/app.model.validator-element-result';

@@ -11,6 +11,7 @@ export * from './src/app/components/app.component.attribute-validator-range';
 export * from './src/app/components/app.component.attribute-validator';
 
 // consts
+export * from './src/app/const/app.const.tokens';
 export * from './src/app/const/app.const.validator-messages';
 export * from './src/app/const/app.const.validator-types';
 
